@@ -1,0 +1,29 @@
+# ModelArguments
+model_id: "facebook/opt-125m"
+
+# PeftArguments
+lora_r: 16
+lora_alpha: 64
+lora_dropout: 0.05
+target_modules: ["q_proj", "k_proj", "v_proj"]
+
+# DatasetArguments
+dataset_id: "Abirate/english_quotes"
+
+# TrainingArguments
+output_dir: "./results"
+do_eval: True
+evaluation_strategy: "epoch"
+learning_rate: 2e-4
+max_grad_norm: 0.3
+max_steps: 100
+lr_scheduler_type: "constant"
+warmup_ratio: 0.03
+logging_steps: 5
+save_steps: 5
+
+# CollatorArguments
+collator_type: "Causal"
+
+# EvalArguments
+metric_type: "accuracy"
